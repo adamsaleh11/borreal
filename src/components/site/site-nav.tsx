@@ -2,18 +2,26 @@
 
 import * as React from "react";
 import { FernMark } from "@/components/site/fern-mark";
+import { LanguageToggle } from "@/components/site/language-toggle";
+import { useLanguage } from "@/components/site/language-provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { Dictionary } from "@/lib/i18n";
 
+/** Hrefs are structural; the labels come from the active dictionary. */
 const LINKS = [
-  { href: "#platform", label: "Platform" },
-  { href: "#sectors", label: "Sectors" },
-  { href: "#corridor", label: "First corridor" },
-  { href: "#governance", label: "Governance" },
-  { href: "#roadmap", label: "2026" },
-];
+  { href: "#platform", key: "platform" },
+  { href: "#sectors", key: "sectors" },
+  { href: "#corridor", key: "corridor" },
+  { href: "#governance", key: "governance" },
+  { href: "#roadmap", key: "roadmap" },
+] as const satisfies ReadonlyArray<{
+  href: string;
+  key: keyof Dictionary["nav"]["links"];
+}>;
 
 export function SiteNav() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -53,27 +61,28 @@ export function SiteNav() {
               href={l.href}
               className="rule-label text-muted-foreground hover:text-foreground transition-colors"
             >
-              {l.label}
+              {t.nav.links[l.key]}
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <Button
             asChild
             size="sm"
             className="hidden rounded-full px-5 sm:inline-flex"
           >
-            <a href="#contact">Request an introduction</a>
+            <a href="#contact">{t.nav.cta}</a>
           </Button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label="Toggle navigation"
+            aria-label={t.nav.toggleNav}
             className="border-border text-foreground grid h-9 w-9 place-items-center rounded-full border md:hidden"
           >
-            <span className="sr-only">Menu</span>
+            <span className="sr-only">{t.nav.menu}</span>
             <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
               <path
                 d={open ? "M3 3 L13 13 M13 3 L3 13" : "M2.5 5 H13.5 M2.5 11 H13.5"}
@@ -97,12 +106,12 @@ export function SiteNav() {
                 onClick={() => setOpen(false)}
                 className="rule-label text-muted-foreground hover:text-foreground py-2 transition-colors"
               >
-                {l.label}
+                {t.nav.links[l.key]}
               </a>
             ))}
             <Button asChild size="sm" className="mt-3 w-fit rounded-full px-5">
               <a href="#contact" onClick={() => setOpen(false)}>
-                Request an introduction
+                {t.nav.cta}
               </a>
             </Button>
           </nav>
