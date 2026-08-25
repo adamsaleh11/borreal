@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Boreall Fern Inc. — brand system.
+
+  Palette reasoning: the company bridges the Canadian boreal and the Chilean
+  temperate south, so the ground tones are forest/paper. The accent is copper —
+  Chile is the world's largest producer and "mining and critical minerals
+  (copper, lithium)" is the first strategic sector named in the exec deck.
+*/
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-display);
+  --font-heading: var(--font-display);
+
+  /* Brand scale */
+  --color-boreal-950: #0b1712;
+  --color-boreal-900: #0f2019;
+  --color-boreal-800: #17301f;
+  --color-boreal-700: #1f4029;
+  --color-frond-500: #5d7a5f;
+  --color-frond-400: #7d9a7c;
+  --color-sage-300: #a8bba3;
+  --color-bone-50: #faf8f2;
+  --color-bone-100: #f4f1e7;
+  --color-bone-200: #e8e3d4;
+  --color-bone-300: #d6cfba;
+  --color-copper-600: #9d5330;
+  --color-copper-500: #b4633a;
+  --color-copper-400: #c8794e;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f4f1e7;
+  --foreground: #0f2019;
+  --card: #faf8f2;
+  --card-foreground: #0f2019;
+  --popover: #faf8f2;
+  --popover-foreground: #0f2019;
+  --primary: #17301f;
+  --primary-foreground: #f4f1e7;
+  --secondary: #e8e3d4;
+  --secondary-foreground: #17301f;
+  --muted: #e8e3d4;
+  --muted-foreground: #5a6b5c;
+  --accent: #b4633a;
+  --accent-foreground: #faf8f2;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #d6cfba;
+  --input: #d6cfba;
+  --ring: #5d7a5f;
+  --chart-1: #17301f;
+  --chart-2: #5d7a5f;
+  --chart-3: #a8bba3;
+  --chart-4: #b4633a;
+  --chart-5: #c8794e;
+  --radius: 0.25rem;
+  --sidebar: #faf8f2;
+  --sidebar-foreground: #0f2019;
+  --sidebar-primary: #17301f;
+  --sidebar-primary-foreground: #f4f1e7;
+  --sidebar-accent: #e8e3d4;
+  --sidebar-accent-foreground: #17301f;
+  --sidebar-border: #d6cfba;
+  --sidebar-ring: #5d7a5f;
+}
+
+.dark {
+  --background: #0b1712;
+  --foreground: #f4f1e7;
+  --card: #0f2019;
+  --card-foreground: #f4f1e7;
+  --popover: #0f2019;
+  --popover-foreground: #f4f1e7;
+  --primary: #f4f1e7;
+  --primary-foreground: #0f2019;
+  --secondary: #17301f;
+  --secondary-foreground: #f4f1e7;
+  --muted: #17301f;
+  --muted-foreground: #a8bba3;
+  --accent: #c8794e;
+  --accent-foreground: #0b1712;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: color-mix(in srgb, #f4f1e7 14%, transparent);
+  --input: color-mix(in srgb, #f4f1e7 18%, transparent);
+  --ring: #7d9a7c;
+  --chart-1: #f4f1e7;
+  --chart-2: #a8bba3;
+  --chart-3: #7d9a7c;
+  --chart-4: #c8794e;
+  --chart-5: #b4633a;
+  --sidebar: #0f2019;
+  --sidebar-foreground: #f4f1e7;
+  --sidebar-primary: #f4f1e7;
+  --sidebar-primary-foreground: #0f2019;
+  --sidebar-accent: #17301f;
+  --sidebar-accent-foreground: #f4f1e7;
+  --sidebar-border: color-mix(in srgb, #f4f1e7 14%, transparent);
+  --sidebar-ring: #7d9a7c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* Hold Fraunces near-upright: WONK off, SOFT low — institutional, not craft. */
+  .font-serif,
+  h1,
+  h2,
+  h3 {
+    font-variation-settings: "SOFT" 12, "WONK" 0;
+  }
+}
+
+@utility rule-label {
+  @apply font-mono text-[0.6875rem] uppercase tracking-[0.18em];
+}
+
+/* Fine cartographic grid used behind dark sections. */
+@utility grid-field {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, currentColor 7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, currentColor 7%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 5.5rem 5.5rem;
+}
