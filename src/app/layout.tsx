@@ -31,15 +31,15 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://boreallfern.com"),
   title: {
-    default: "Boreall Fern Inc. — Industrial & Strategic Trade Enablement",
+    default: "Boreall Fern Inc. — Canadian Pulses for Chile",
     template: "%s · Boreall Fern Inc.",
   },
   description:
-    "A Canadian family-owned trade enablement platform connecting Canadian industrial capability with South American demand — beginning with Chile.",
+    "A Canadian, family-owned pulse exporter. Lentils contracted direct with Saskatchewan and Alberta growers and shipped by the container to distributors and food processors in Chile.",
   openGraph: {
-    title: "Boreall Fern Inc. — Industrial & Strategic Trade Enablement",
+    title: "Boreall Fern Inc. — Canadian Pulses for Chile",
     description:
-      "Connecting Canadian industrial capability with South American demand. Canada · Chile · South America · China.",
+      "Lentils from the Canadian Prairies to Chilean buyers, contracted at the farm and delivered by the container. Canada · Chile · South America.",
     type: "website",
     locale: "en_CA",
   },

@@ -10,9 +10,8 @@ import type { Dictionary } from "@/lib/i18n";
 
 /** Hrefs are structural; the labels come from the active dictionary. */
 const LINKS = [
+  { href: "#pulses", key: "pulses" },
   { href: "#platform", key: "platform" },
-  { href: "#sectors", key: "sectors" },
-  { href: "#corridor", key: "corridor" },
   { href: "#governance", key: "governance" },
   { href: "#roadmap", key: "roadmap" },
 ] as const satisfies ReadonlyArray<{

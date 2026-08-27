@@ -7,10 +7,10 @@
 /*
   Boreall Fern Inc. — brand system.
 
-  Palette reasoning: the company bridges the Canadian boreal and the Chilean
+  Palette reasoning: the company bridges the Canadian Prairies and the Chilean
   temperate south, so the ground tones are forest/paper. The accent is copper —
-  Chile is the world's largest producer and "mining and critical minerals
-  (copper, lithium)" is the first strategic sector named in the exec deck.
+  the metal Chile is known for, and the closest warm note to a red lentil, which
+  is what actually moves down the lane.
 */
 @theme inline {
   --color-background: var(--background);

@@ -92,9 +92,10 @@ function SectionHead({
 
 /* ------------------------------------------------------------------- content */
 
-/** Corridor codes and roadmap quarters are structural — they read the same in
- *  both languages, so only the names and prose come from the dictionary. */
-const CORRIDOR_CODES = ["CA", "CL", "AR", "CN"] as const;
+/** The rail keys and roadmap quarters are structural — they read the same in
+ *  both languages, so only the prose behind them comes from the dictionary. */
+const ROUTE_KEYS = ["origin", "destination", "product", "unit"] as const;
+const FOOTER_CODES = ["CA", "CL"] as const;
 const QUARTERS = ["Q1", "Q2", "Q3–Q4"] as const;
 
 /* ---------------------------------------------------------------------- page */
@@ -123,37 +124,84 @@ export function HomeContent() {
         secondaryCTA={{
           ctaEnabled: true,
           text: t.hero.secondaryCta,
-          link: "#sectors",
+          link: "#pulses",
           variant: "link",
         }}
       />
 
-      {/* Corridor rail */}
+      {/* Route rail — the trade in four facts, before any prose */}
       <div className="border-border bg-bone-50 border-y">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px px-6 lg:grid-cols-4">
-          {CORRIDOR_CODES.map((code, i) => (
-            <div
-              key={code}
-              className={cn(
-                "border-border py-6 lg:py-7",
-                i !== 0 && "lg:border-l lg:pl-7",
-                i % 2 === 1 && "border-l pl-6 lg:pl-7",
-                i > 1 && "border-t lg:border-t-0"
-              )}
-            >
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-copper-500 text-xs">{code}</span>
-                <span className="font-serif text-lg tracking-tight">
-                  {t.corridors[code].name}
-                </span>
+          {ROUTE_KEYS.map((key, i) => {
+            const row = t.route[key];
+            return (
+              <div
+                key={key}
+                className={cn(
+                  "border-border py-6 lg:py-7",
+                  i !== 0 && "lg:border-l lg:pl-7",
+                  i % 2 === 1 && "border-l pl-6 lg:pl-7",
+                  i > 1 && "border-t lg:border-t-0"
+                )}
+              >
+                <p className="rule-label text-copper-500">{row.k}</p>
+                <p className="font-serif mt-2 text-lg tracking-tight">{row.v}</p>
+                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                  {row.d}
+                </p>
               </div>
-              <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                {t.corridors[code].role}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
+
+      {/* What we ship — the flagship section, first thing after the hero */}
+      <Section id="pulses" tone="forest">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <Label className="text-sage-300">{t.pulses.label}</Label>
+            <h2 className="font-serif mt-4 text-2xl font-normal tracking-tight text-balance sm:text-3xl md:text-4xl">
+              {t.pulses.title}
+            </h2>
+            <p className="text-sage-300 mt-5 leading-relaxed">{t.pulses.body}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button
+                asChild
+                className="bg-bone-100 text-boreal-900 hover:bg-bone-200 rounded-full px-5"
+              >
+                <a href="#contact">{t.pulses.cta}</a>
+              </Button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 lg:col-start-7">
+            <Label className="text-sage-300">{t.pulses.ladderLabel}</Label>
+            <ol className="mt-4">
+              {t.pulses.ladder.map((rung) => (
+                <li
+                  key={rung.title}
+                  className="border-bone-100/15 grid grid-cols-1 gap-2 border-t py-6 last:border-b sm:grid-cols-12 sm:gap-6"
+                >
+                  <span className="text-copper-400 font-mono text-xs sm:col-span-4">
+                    {rung.stage}
+                  </span>
+                  <div className="sm:col-span-8">
+                    <h3 className="font-serif text-xl font-normal tracking-tight">
+                      {rung.title}
+                    </h3>
+                    <p className="text-sage-300 mt-2 text-sm leading-relaxed">
+                      {rung.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="text-sage-300/70 mt-6 text-xs leading-relaxed">
+              {t.pulses.footnote}
+            </p>
+          </div>
+        </div>
+      </Section>
 
       {/* Who we are */}
       <Section id="platform">
@@ -187,106 +235,9 @@ export function HomeContent() {
         </div>
       </Section>
 
-      {/* Sectors */}
-      <Section id="sectors" tone="forest">
-        <SectionHead
-          invert
-          label={t.sectors.label}
-          title={t.sectors.title}
-          lede={t.sectors.lede}
-        />
-
-        <ul className="mt-14 grid grid-cols-1 gap-px">
-          {t.sectors.items.map((s, i) => (
-            <li
-              key={s.title}
-              className="group border-bone-100/15 grid grid-cols-1 gap-4 border-t py-7 last:border-b lg:grid-cols-12 lg:items-baseline lg:gap-10"
-            >
-              <span className="text-copper-400 font-mono text-xs lg:col-span-1">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-serif text-xl font-normal tracking-tight lg:col-span-5">
-                {s.title}
-              </h3>
-              <p className="text-sage-300 text-sm leading-relaxed lg:col-span-6">
-                {s.body}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      {/* First corridor — legumes & pulses */}
-      <Section id="corridor" tone="card">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
-            <Label>{t.corridor.label}</Label>
-            <h2 className="font-serif mt-4 text-2xl font-normal tracking-tight text-balance sm:text-3xl md:text-4xl">
-              {t.corridor.title}
-            </h2>
-            <p className="text-muted-foreground mt-5 leading-relaxed">
-              {t.corridor.body}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild className="rounded-full px-5">
-                <a href="#contact">{t.corridor.cta}</a>
-              </Button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6 lg:col-start-7">
-            <dl className="grid grid-cols-1 gap-px sm:grid-cols-2">
-              {t.corridor.facts.map((row, i) => (
-                <div
-                  key={row.k}
-                  className={cn(
-                    "border-border border-t py-6",
-                    i % 2 === 1 && "sm:border-l sm:pl-6"
-                  )}
-                >
-                  <dt className="rule-label text-muted-foreground">{row.k}</dt>
-                  <dd className="font-serif mt-2 text-xl tracking-tight">{row.v}</dd>
-                  <dd className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                    {row.d}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <p className="text-muted-foreground/80 mt-6 text-xs leading-relaxed">
-              {t.corridor.footnote}
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Business model */}
-      <Section>
-        <SectionHead label={t.model.label} title={t.model.title} />
-        <div className="mt-14 grid grid-cols-1 gap-px md:grid-cols-3">
-          {t.model.items.map((m, i) => (
-            <div
-              key={m.title}
-              className={cn(
-                "border-border border-t py-8 md:px-8",
-                i !== 0 && "md:border-l",
-                i === 0 && "md:pl-0"
-              )}
-            >
-              <h3 className="font-serif text-xl font-normal tracking-tight">
-                {m.title}
-              </h3>
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-                {m.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* Governance */}
-      <Section id="governance" tone="forest">
+      <Section id="governance" tone="card">
         <SectionHead
-          invert
           label={t.governance.label}
           title={t.governance.title}
           lede={t.governance.lede}
@@ -296,28 +247,30 @@ export function HomeContent() {
             <div
               key={g.title}
               className={cn(
-                "border-bone-100/15 border-t py-8",
+                "border-border border-t py-8",
                 i % 2 === 1 && "sm:border-l sm:pl-8"
               )}
             >
               <h3 className="font-serif text-xl font-normal tracking-tight">
                 {g.title}
               </h3>
-              <p className="text-sage-300 mt-3 text-sm leading-relaxed">{g.body}</p>
+              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                {g.body}
+              </p>
             </div>
           ))}
         </div>
 
-        <div className="border-bone-100/15 mt-14 border-t pt-10">
-          <Label className="text-sage-300">{t.governance.ecosystemLabel}</Label>
-          <p className="mt-4 max-w-3xl leading-relaxed">
+        <div className="border-border mt-14 border-t pt-10">
+          <Label>{t.governance.ecosystemLabel}</Label>
+          <p className="text-muted-foreground mt-4 max-w-3xl leading-relaxed">
             {t.governance.ecosystemBody}
           </p>
         </div>
       </Section>
 
       {/* Roadmap + status */}
-      <Section id="roadmap" tone="card">
+      <Section id="roadmap">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Label>{t.roadmap.label}</Label>
@@ -359,7 +312,7 @@ export function HomeContent() {
       </Section>
 
       {/* Closing / contact */}
-      <Section id="contact">
+      <Section id="contact" tone="card">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Label>{t.contact.label}</Label>
@@ -382,6 +335,10 @@ export function HomeContent() {
                 info@boreallfern.com
               </a>
             </div>
+            {/* The one soft mention of anything beyond pulses. */}
+            <p className="text-muted-foreground/70 mt-10 max-w-2xl text-xs leading-relaxed">
+              {t.contact.expansion}
+            </p>
           </div>
         </div>
       </Section>
@@ -403,9 +360,9 @@ export function HomeContent() {
             </div>
 
             <div className="flex flex-col gap-2">
-              {CORRIDOR_CODES.map((code) => (
+              {FOOTER_CODES.map((code) => (
                 <span key={code} className="font-mono text-sage-300 text-xs">
-                  {code} &nbsp;{t.corridors[code].name}
+                  {code} &nbsp;{t.corridors[code]}
                 </span>
               ))}
             </div>
