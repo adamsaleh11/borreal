@@ -1,10 +1,13 @@
 "use client";
 
+import Image from "next/image";
+
 import { Hero05 } from "@/components/ui/hero-05";
 import { SiteNav } from "@/components/site/site-nav";
 import { FernMark } from "@/components/site/fern-mark";
 import { useLanguage } from "@/components/site/language-provider";
 import { Button } from "@/components/ui/button";
+import { CREDITS, IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 /* ---------------------------------------------------------------- primitives */
@@ -18,6 +21,37 @@ function Label({
 }) {
   return (
     <p className={cn("rule-label text-muted-foreground", className)}>{children}</p>
+  );
+}
+
+/**
+ * A photograph with its frame. `sizes` is passed per use site because the same
+ * component runs full-bleed and at a half-column width.
+ */
+function Figure({
+  image,
+  alt,
+  sizes,
+  className,
+  imgClassName,
+}: {
+  image: (typeof IMAGES)[keyof typeof IMAGES];
+  alt: string;
+  sizes: string;
+  className?: string;
+  imgClassName?: string;
+}) {
+  return (
+    <div className={cn("relative overflow-hidden", className)}>
+      <Image
+        src={image.src}
+        alt={alt}
+        width={image.width}
+        height={image.height}
+        sizes={sizes}
+        className={cn("h-full w-full object-cover", imgClassName)}
+      />
+    </div>
   );
 }
 
@@ -113,7 +147,7 @@ export function HomeContent() {
         tagline={t.hero.tagline}
         title={t.hero.title}
         description={t.hero.description}
-        landscapeImage="/hero-corridor.svg"
+        landscapeImage={IMAGES.prairieCanola.src}
         landscapeAlt={t.hero.landscapeAlt}
         primaryCTA={{
           ctaEnabled: true,
@@ -201,6 +235,20 @@ export function HomeContent() {
             </p>
           </div>
         </div>
+
+        {/* The product itself, run as a band so the section ends on the crop
+            rather than on more prose. */}
+        <figure className="mt-16">
+          <Figure
+            image={IMAGES.redLentils}
+            alt={t.media.alt.lentils}
+            sizes="(min-width: 1280px) 1216px, 100vw"
+            className="aspect-[16/5] rounded-sm"
+          />
+          <figcaption className="text-sage-300/70 mt-3 font-mono text-xs">
+            {t.media.pulsesCaption}
+          </figcaption>
+        </figure>
       </Section>
 
       {/* Who we are */}
@@ -210,6 +258,37 @@ export function HomeContent() {
           title={t.platform.title}
           lede={t.platform.lede}
         />
+
+        {/* Equal halves, deliberately: the two ends of the lane get the same
+            frame, the same size and the same caption weight. */}
+        <figure className="mt-14">
+          <div className="grid grid-cols-1 gap-px sm:grid-cols-2">
+            {(
+              [
+                ["CA", IMAGES.prairieHarvest, t.media.alt.harvest],
+                ["CL", IMAGES.chileRapeseed, t.media.alt.rapeseed],
+              ] as const
+            ).map(([code, image, alt]) => (
+              <div key={code}>
+                <Figure
+                  image={image}
+                  alt={alt}
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="aspect-[3/2] rounded-sm"
+                />
+                <p className="text-copper-500 mt-3 font-mono text-xs">
+                  {code}&nbsp;&nbsp;{t.corridors[code]}
+                </p>
+              </div>
+            ))}
+          </div>
+          <figcaption className="border-border mt-6 border-t pt-5">
+            <Label>{t.media.pairLabel}</Label>
+            <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+              {t.media.pairNote}
+            </p>
+          </figcaption>
+        </figure>
 
         <div className="mt-14 grid grid-cols-1 gap-px sm:grid-cols-3">
           {t.platform.valueProp.map((v, i) => (
@@ -267,6 +346,30 @@ export function HomeContent() {
             {t.governance.ecosystemBody}
           </p>
         </div>
+
+        {/* The receiving end of the paper trail: Chilean ground, Chilean port. */}
+        <figure className="mt-14">
+          <div className="grid grid-cols-1 gap-px sm:grid-cols-2">
+            <Figure
+              image={IMAGES.chileLimari}
+              alt={t.media.alt.limari}
+              sizes="(min-width: 640px) 50vw, 100vw"
+              className="aspect-[3/2] rounded-sm"
+            />
+            <Figure
+              image={IMAGES.valparaisoPort}
+              alt={t.media.alt.port}
+              sizes="(min-width: 640px) 50vw, 100vw"
+              className="aspect-[3/2] rounded-sm"
+            />
+          </div>
+          <figcaption className="border-border mt-6 border-t pt-5">
+            <Label>{t.media.corridorLabel}</Label>
+            <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+              {t.media.corridorNote}
+            </p>
+          </figcaption>
+        </figure>
       </Section>
 
       {/* Roadmap + status */}
@@ -367,6 +470,44 @@ export function HomeContent() {
               ))}
             </div>
           </div>
+
+          {/* Attribution is a licence condition on the CC BY / CC BY-SA frames,
+              not a courtesy — see src/lib/images.ts. Collapsed so it stays out
+              of the way without being buried. */}
+          <details className="border-bone-100/15 mt-12 border-t pt-6">
+            <summary className="text-sage-300 cursor-pointer font-mono text-[0.6875rem] tracking-wide">
+              {t.media.creditsLabel}
+            </summary>
+            <p className="text-sage-300/70 mt-4 max-w-2xl text-xs leading-relaxed">
+              {t.media.creditsNote}
+            </p>
+            <ul className="mt-4 space-y-2">
+              {CREDITS.map((c) => (
+                <li
+                  key={c.src}
+                  className="text-sage-300/70 font-mono text-[0.6875rem] leading-relaxed"
+                >
+                  <a
+                    href={c.source}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="underline-offset-4 hover:underline"
+                  >
+                    {c.subject}
+                  </a>{" "}
+                  — {c.photographer},{" "}
+                  <a
+                    href={c.licenseUrl}
+                    rel="license noreferrer"
+                    target="_blank"
+                    className="underline-offset-4 hover:underline"
+                  >
+                    {c.license}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
 
           <div className="border-bone-100/15 mt-12 flex flex-col gap-3 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sage-300 font-mono text-[0.6875rem]">

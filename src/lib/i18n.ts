@@ -50,9 +50,9 @@ const en = {
       "A Canadian, family-owned pulse exporter. Prairie growers to Chilean buyers, under direct contract.",
     title: "Canadian pulses for Chile.",
     description:
-      "We move lentils from Saskatchewan and Alberta farms to distributors and food processors in Chile — contracted direct with the grower, inspected to Chilean import standard, shipped by the container. Chickpeas, dry peas, soybeans and grain travel the same lane as demand builds.",
+      "We are building a direct lane for lentils from Saskatchewan, Alberta and Manitoba farms to distributors and food processors in Chile — contracted direct with the grower, inspected to Chilean import standard, shipped by the container. Chickpeas, dry peas, soybeans and grain will follow the same lane as demand builds.",
     landscapeAlt:
-      "Stylised topographic corridor running from the Canadian Prairies to the Chilean coast",
+      "Canola in flower stretching to the horizon under a towering bank of cloud at sunset, on the Canadian Prairies",
     primaryCta: "Request a quote for a container",
     secondaryCta: "See how a shipment works",
   },
@@ -61,8 +61,8 @@ const en = {
   route: {
     origin: {
       k: "Origin",
-      v: "Saskatchewan & Alberta",
-      d: "Bought under contract, direct from the grower.",
+      v: "Saskatchewan, Alberta & Manitoba",
+      d: "Contracted direct with the grower, not through resellers.",
     },
     destination: {
       k: "Destination",
@@ -70,7 +70,7 @@ const en = {
       d: "Distributors and food processors, diversified buyers.",
     },
     product: {
-      k: "Shipping now",
+      k: "Lead product",
       v: "Lentils",
       d: "Pulses and grains follow the same lane.",
     },
@@ -83,12 +83,12 @@ const en = {
 
   pulses: {
     label: "What we ship",
-    title: "Lentils today, on a lane built to carry grain.",
-    body: "Lentils are what moves right now: contracted with growers in Saskatchewan and Alberta, inspected against the sample before loading, and shipped in 21-tonne containers to buyers in Chile. Everything standing behind that container — the grower contracts, the phytosanitary and origin paperwork, the freight, the insurance, the buyer relationships — is commodity-agnostic. Adding a pulse or a grain is a purchase order, not a new business.",
+    title: "Lentils first, on a lane built to carry grain.",
+    body: "Lentils are our lead product: being contracted with growers in Saskatchewan, Alberta and Manitoba, inspected against the sample before loading, and shipped in 21-tonne containers to buyers in Chile. Everything standing behind that container — the grower contracts, the phytosanitary and origin paperwork, the freight, the insurance, the buyer relationships — is commodity-agnostic. Adding a pulse or a grain is a purchase order, not a new business.",
     ladderLabel: "Product ladder",
     ladder: [
       {
-        stage: "Shipping now",
+        stage: "Lead product",
         title: "Lentils",
         body: "Red and green, contracted at origin and containerised for Chilean distributors and processors.",
       },
@@ -114,7 +114,7 @@ const en = {
     lede: "Boreall Fern Inc. is a federally incorporated, family-owned Canadian exporter. We buy pulses under direct contract from Prairie growers and sell them to distributors and food processors in Chile. One origin, one destination, one set of relationships — held long enough to be worth something at both ends.",
     valueProp: [
       {
-        title: "Why Saskatchewan & Alberta",
+        title: "Why Saskatchewan, Alberta & Manitoba",
         body: "Canada is the world's largest lentil exporter and the Prairies grow nearly all of it. Buying at origin, under contract with the grower, settles grade and price before a container is ever booked.",
       },
       {
@@ -152,7 +152,7 @@ const en = {
     ],
     ecosystemLabel: "Institutional ecosystem",
     ecosystemBody:
-      "We work alongside EDC, the Trade Commissioner Service, and the Canadian banks, insurers, customs brokers and freight forwarders that stand behind an export before the first container moves.",
+      "We are establishing relationships with the financial, logistics and trade-support institutions that back Canadian businesses and their products into international markets — banks, insurers, customs brokers and freight forwarders.",
   },
 
   roadmap: {
@@ -160,7 +160,7 @@ const en = {
     title: "One container at a time.",
     status: [
       "Federally incorporated and registered with the Canada Revenue Agency",
-      "Grower relationships in Saskatchewan and Alberta being contracted",
+      "Grower relationships in Saskatchewan, Alberta and Manitoba being contracted",
       "Banking, trade finance and cargo insurance arrangements in progress",
     ],
     phases: [
@@ -185,8 +185,35 @@ const en = {
     body: "We are speaking with Chilean distributors and food processors looking for contracted Canadian supply, and with Prairie growers and grain handlers who want a direct lane south.",
     /** The single soft mention of anything beyond pulses — deliberately one line. */
     expansion:
-      "Other Canadian goods will follow this corridor in time. Pulses are what we run today.",
+      "Other Canadian goods will follow this corridor in time. Pulses are where we start.",
     cta: "Request a quote for a container",
+  },
+
+  /**
+   * Photography. `alt` is what a screen reader hears; the visible captions
+   * carry the argument the pairing is there to make.
+   */
+  media: {
+    pairLabel: "Two harvests, one lane",
+    pairNote:
+      "Canada and Chile sit in opposite hemispheres and harvest half a year apart. That offset is the reason a single lane between them is worth building.",
+    corridorLabel: "Field to port",
+    corridorNote:
+      "The documentation we are putting in place has to hold from the grower's field all the way to the receiving port.",
+    pulsesCaption: "Split red lentils — the lead product.",
+    creditsLabel: "Photography",
+    creditsNote:
+      "Documentary photographs by the photographers named, used under the licence shown against each. No AI-generated imagery.",
+    alt: {
+      lentils: "Split red lentils filling the frame",
+      harvest:
+        "A line of combine harvesters cutting a grain field in a haze of dust on the Canadian Prairies",
+      rapeseed:
+        "A field of rapeseed in full yellow flower under a clear sky in southern Chile",
+      limari:
+        "Irrigated smallholdings and green fields patterned across the Limarí valley in Chile, with dry hills behind",
+      port: "Container gantry cranes and moored fishing boats at the port of Valparaíso, Chile",
+    },
   },
 
   /** Footer route stamp. */
@@ -231,9 +258,9 @@ const es: Dictionary = {
       "Exportadora canadiense de legumbres, de propiedad familiar. Del productor de las Praderas al comprador chileno, mediante contrato directo.",
     title: "Legumbres canadienses para Chile.",
     description:
-      "Trasladamos lentejas desde predios de Saskatchewan y Alberta hasta distribuidores y procesadores de alimentos en Chile: contratadas directamente con el productor, inspeccionadas conforme a la norma de importación chilena y embarcadas por contenedor. Garbanzos, arvejas secas, soya y granos recorren la misma ruta a medida que crece la demanda.",
+      "Estamos construyendo una ruta directa para llevar lentejas desde predios de Saskatchewan, Alberta y Manitoba hasta distribuidores y procesadores de alimentos en Chile: contratadas directamente con el productor, inspeccionadas conforme a la norma de importación chilena y embarcadas por contenedor. Garbanzos, arvejas secas, soya y granos seguirán la misma ruta a medida que crezca la demanda.",
     landscapeAlt:
-      "Corredor topográfico estilizado que va desde las Praderas canadienses hasta la costa chilena",
+      "Canola en flor que se extiende hasta el horizonte bajo un gran banco de nubes al atardecer, en las Praderas canadienses",
     primaryCta: "Solicitar cotización por contenedor",
     secondaryCta: "Cómo funciona un embarque",
   },
@@ -241,8 +268,8 @@ const es: Dictionary = {
   route: {
     origin: {
       k: "Origen",
-      v: "Saskatchewan y Alberta",
-      d: "Compra bajo contrato, directamente al productor.",
+      v: "Saskatchewan, Alberta y Manitoba",
+      d: "Contratación directa con el productor, sin revendedores.",
     },
     destination: {
       k: "Destino",
@@ -250,7 +277,7 @@ const es: Dictionary = {
       d: "Distribuidores y procesadores de alimentos, con compradores diversificados.",
     },
     product: {
-      k: "En embarque hoy",
+      k: "Producto principal",
       v: "Lentejas",
       d: "Legumbres y granos siguen la misma ruta.",
     },
@@ -263,12 +290,12 @@ const es: Dictionary = {
 
   pulses: {
     label: "Qué exportamos",
-    title: "Lentejas hoy, sobre una ruta construida para granos.",
-    body: "Las lentejas son lo que se mueve actualmente: contratadas con productores de Saskatchewan y Alberta, inspeccionadas contra la muestra antes de la carga y embarcadas en contenedores de 21 toneladas hacia compradores en Chile. Todo lo que respalda ese contenedor —los contratos con productores, la documentación fitosanitaria y de origen, el flete, los seguros, las relaciones con los compradores— es independiente del producto. Incorporar una legumbre o un grano es una orden de compra, no un negocio nuevo.",
+    title: "Lentejas primero, sobre una ruta construida para granos.",
+    body: "Las lentejas son nuestro producto principal: en proceso de contratación con productores de Saskatchewan, Alberta y Manitoba, inspeccionadas contra la muestra antes de la carga y embarcadas en contenedores de 21 toneladas hacia compradores en Chile. Todo lo que respalda ese contenedor —los contratos con productores, la documentación fitosanitaria y de origen, el flete, los seguros, las relaciones con los compradores— es independiente del producto. Incorporar una legumbre o un grano es una orden de compra, no un negocio nuevo.",
     ladderLabel: "Escalera de productos",
     ladder: [
       {
-        stage: "En embarque hoy",
+        stage: "Producto principal",
         title: "Lentejas",
         body: "Rojas y verdes, contratadas en origen y contenedorizadas para distribuidores y procesadores chilenos.",
       },
@@ -294,7 +321,7 @@ const es: Dictionary = {
     lede: "Boreall Fern Inc. es una exportadora canadiense de propiedad familiar, constituida federalmente. Compramos legumbres bajo contrato directo a productores de las Praderas y las vendemos a distribuidores y procesadores de alimentos en Chile. Un origen, un destino y un conjunto de relaciones sostenidas el tiempo suficiente para que valgan algo en ambos extremos.",
     valueProp: [
       {
-        title: "Por qué Saskatchewan y Alberta",
+        title: "Por qué Saskatchewan, Alberta y Manitoba",
         body: "Canadá es el mayor exportador mundial de lentejas y las Praderas concentran casi toda su producción. Comprar en origen, bajo contrato con el productor, define calidad y precio antes de reservar un contenedor.",
       },
       {
@@ -332,7 +359,7 @@ const es: Dictionary = {
     ],
     ecosystemLabel: "Ecosistema institucional",
     ecosystemBody:
-      "Trabajamos junto a EDC, el Servicio de Delegados Comerciales de Canadá y los bancos, aseguradoras, agentes de aduana y transitarios canadienses que respaldan una exportación antes de que se mueva el primer contenedor.",
+      "Estamos estableciendo relaciones con las instituciones financieras, logísticas y de apoyo al comercio que respaldan a las empresas canadienses y sus productos en los mercados internacionales: bancos, aseguradoras, agentes de aduana y transitarios.",
   },
 
   roadmap: {
@@ -340,7 +367,7 @@ const es: Dictionary = {
     title: "Un contenedor a la vez.",
     status: [
       "Constituida federalmente e inscrita ante la Agencia Tributaria de Canadá (CRA)",
-      "Relaciones con productores de Saskatchewan y Alberta en proceso de contratación",
+      "Relaciones con productores de Saskatchewan, Alberta y Manitoba en proceso de contratación",
       "Acuerdos bancarios, de financiamiento comercial y de seguro de carga en curso",
     ],
     phases: [
@@ -364,8 +391,31 @@ const es: Dictionary = {
     title: "Conversemos sobre un contenedor.",
     body: "Conversamos con distribuidores y procesadores de alimentos chilenos que buscan abastecimiento canadiense contratado, y con productores y acopiadores de las Praderas que quieren una ruta directa hacia el sur.",
     expansion:
-      "Con el tiempo, otros bienes canadienses seguirán este corredor. Hoy lo que movemos son legumbres.",
+      "Con el tiempo, otros bienes canadienses seguirán este corredor. Las legumbres son nuestro punto de partida.",
     cta: "Solicitar cotización por contenedor",
+  },
+
+  media: {
+    pairLabel: "Dos cosechas, una misma ruta",
+    pairNote:
+      "Canadá y Chile se ubican en hemisferios opuestos y cosechan con medio año de diferencia. Ese desfase es la razón por la que vale la pena construir una ruta única entre ambos.",
+    corridorLabel: "Del campo al puerto",
+    corridorNote:
+      "La documentación que estamos implementando debe sostenerse desde el predio del productor hasta el puerto de destino.",
+    pulsesCaption: "Lenteja roja partida: nuestro producto principal.",
+    creditsLabel: "Fotografía",
+    creditsNote:
+      "Fotografías documentales de los autores indicados, utilizadas bajo la licencia señalada en cada caso. Sin imágenes generadas por inteligencia artificial.",
+    alt: {
+      lentils: "Lentejas rojas partidas que cubren todo el encuadre",
+      harvest:
+        "Una hilera de cosechadoras trabajando un campo de granos entre una nube de polvo en las Praderas canadienses",
+      rapeseed:
+        "Un campo de raps en plena floración amarilla bajo un cielo despejado en el sur de Chile",
+      limari:
+        "Pequeñas parcelas de riego y campos verdes distribuidos en el valle del Limarí, en Chile, con cerros áridos al fondo",
+      port: "Grúas pórtico de contenedores y botes de pesca amarrados en el puerto de Valparaíso, Chile",
+    },
   },
 
   corridors: {
